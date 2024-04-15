@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r, message=F,warning=F}
+library(tidyverse)
+
+demand = read_csv("Lab1/demandData.csv")
+locations = read_csv("Lab1/WarehouseLocations.csv")
+```
+
+
+```{r, message = F, warning=F}
+# only join the rows that match in both data sets.
+join = inner_join(demand, locations, by=c("Name" = "Store"))
+
+# tidy the data, into long format so that observations are in rows and not columns
+demandPivot = join |> pivot_longer(cols=2:29, names_to = "Date", values_to = "Demand")
+
+# convert the date into yyyy-mm-dd format
+demandPivot$Date = dmy(demandPivot$Date)
+
+# create new variable for the day of the week
+demandPivot = demandPivot |> mutate(weekDay = wday(demandPivot$Date, label = TRUE, abbr = TRUE), day_num =day(demandPivot$Date))
+
+demandPivot = demandPivot |> mutate(Week = ((day_num - 1) %/% 7) + 1)
+test = demandPivot |> group_by(Type, weekDay) |> filter(Type == "Noel Leeming") |> summarise(Demand)
+
+test2 = demandPivot |> group_by(Name) |> filter(!weekDay %in% c("Sat", "Sun")) |> sample_n(1)
+
+```
+
+```{r}
+demandPivot |> filter(Type == "Noel Leeming") |> ggplot(mapping = aes(x = weekDay, y = Demand)) + geom_boxplot() + facet_grid(. ~ Week) + labs(title = "Total Demand vs Location during May 2023", subtitle="By store type", y = "Total Demand", x = "Location") +
+  theme(axis.text.x = element_text(angle=90, vjust = 0.5, hjust = 1))
+
+```
+```{r}
+demandPivot |> filter(Type == "The Warehouse") |> ggplot(mapping = aes(x = weekDay, y = Demand)) + geom_boxplot() + facet_grid(. ~ Week) + labs(title = "Total Demand vs Location during May 2023", subtitle="By store type", y = "Total Demand", x = "Location") +
+  theme(axis.text.x = element_text(angle=90, vjust = 0.5, hjust = 1))
+```
+
+
+
+```{r}
+# find the total demand at each location by store type
+demand_grouped = demandPivot |> group_by(Type,Location,weekDay) |> summarise(avg_demand = round(mean(Demand))) |> group_by(Type,weekDay) |> summarise(avg = mean(avg_demand))
+```
+
+```{r}
+demandPivot |> ggplot(mapping = aes(x = Type, y = Demand, fill=Type)) + 
+  geom_boxplot() + 
+  facet_grid(.~weekDay) +
+  labs(title = "Demand vs Store type during May 2023", subtitle= "By week day", y = "Demand", x = "Store type") + 
+  # rotate x-axis labels to be vertical 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+demand_grouped |> ggplot(mapping = aes(x = weekDay, y = avg, fill=Type)) + geom_bar(stat="identity") + facet_grid(.~Type) + labs(title="Visualisation of demands for each day of the week", subtitle="By store type", x = "Day of the week", y = "Average demand")
+```
+
+```{r}
+demand_grouped |> ggplot(mapping = aes(x = weekDay, y = ceiling(avg), fill=Type)) + geom_bar(stat="identity") + facet_grid(.~Type) + labs(title="Demand Estimates for each day of the week", subtitle = "By store type", x = "Day of the week", y = "Demand Estimates")
+```
+

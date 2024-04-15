@@ -1,0 +1,14 @@
+Optimal objective function,9252.017222222223
+Distribution South,Noel Leeming Wairau Park,Noel Leeming Albany,The Warehouse Albany,Distribution South
+Distribution South,The Warehouse Glenfield Mall,The Warehouse Milford,Distribution South
+Distribution South,Noel Leeming Henderson,The Warehouse Lincoln Road,The Warehouse Westgate,Distribution South
+Distribution South,The Warehouse WestCity,The Warehouse New Lynn,Noel Leeming New Lynn,Distribution South
+Distribution South,The Warehouse Mt Roskill,Noel Leeming St Lukes Mega,The Warehouse St Lukes,Distribution South
+Distribution South,The Warehouse Royal Oak,Noel Leeming Royal Oak,Noel Leeming Newmarket,Distribution South
+Distribution South,The Warehouse Atrium,The Warehouse Newmarket,Distribution South
+Distribution South,Noel Leeming Lunn Avenue,The Warehouse Lunn Avenue,Noel Leeming Penrose Clearance,Distribution South
+Distribution South,The Warehouse Pakuranga,The Warehouse Sylvia Park,Noel Leeming Sylvia Park,Distribution South
+Distribution South,Noel Leeming Papatoetoe,The Warehouse Takanini,Noel Leeming Papakura,Distribution South
+Distribution South,The Warehouse Manukau,Noel Leeming Manukau Supa Centre,The Warehouse Airport,Distribution South
+Distribution South,The Warehouse Clendon,Distribution South
+Distribution South,Noel Leeming Botany,The Warehouse Botany Downs,Noel Leeming Ormiston,Distribution South

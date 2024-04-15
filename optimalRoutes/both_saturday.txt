@@ -1,0 +1,6 @@
+Optimal objective function,2908.7172222222225
+Distribution North,The Warehouse Albany,The Warehouse Glenfield Mall,The Warehouse Milford,Distribution North
+Distribution North,The Warehouse New Lynn,The Warehouse WestCity,The Warehouse Lincoln Road,The Warehouse Westgate,Distribution North
+Distribution South,The Warehouse Pakuranga,The Warehouse Lunn Avenue,The Warehouse Sylvia Park,Distribution South
+Distribution North,The Warehouse Newmarket,The Warehouse Royal Oak,The Warehouse Mt Roskill,The Warehouse St Lukes,The Warehouse Atrium,Distribution North
+Distribution South,The Warehouse Airport,The Warehouse Manukau,The Warehouse Botany Downs,The Warehouse Takanini,The Warehouse Clendon,Distribution South
